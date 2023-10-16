@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/16 16:12:34 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:21:23 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void PhoneBook::print_contact(){
     for (int i = 0; i < index ; i++)
     {
-        std::cout << "CONTACT : " << i << " | ";
+        std::cout << "CONTACT : " << "*"<< i << "*" << " | ";
         std::cout  << contacts[i].first_name << " | ";
         std::cout  << contacts[i].last_name << " | ";
         std::cout  << contacts[i].nickname << " | ";
@@ -80,24 +80,20 @@ int main()
     PhoneBook phonebook;
     while (1)
     {
-        if (command != "ADD" || command != "SEARCH" || command != "EXIT")
-            std::cout << "Please enter a valid command : ";
+        std::cout << "Please enter a command : ";
         std::getline(std::cin, command);
+        if (command != "ADD" && command != "SEARCH" && command != "EXIT")
+            std::cout << "WARNING -> " << "Please enter a valid command" << std::endl;
         if (command == "ADD")
             phonebook.add_contact();
         if (command == "EXIT")
         {
-            std::cout << "Exiting Phonebook" << std::endl;
+            std::cout << "WARNING -> " <<  "Exiting Phonebook" << std::endl;
             break;
         }
         // if (command == "SEARCH")
         //         phonebook.search_contact();
         // phonebook.print_contact();
-        
-        // else if (command == "SEARCH")
-        //     phonebook.search_contact();
-        // else if (command == "EXIT")
-        //     phonebook.exit();
     }
     return (0);
 }
