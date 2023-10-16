@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/16 16:21:23 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:54:35 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void PhoneBook::print_contact(){
     }
 }
 
+void PhoneBook::print_contact_with_index(int i)
+{
+        if (i > index - 1)
+        {
+            std::cout << "WARNING -> " << "index OUT of RANGE" << std::endl;
+            return ;
+        }
+        std::cout << "CONTACT : " << "*"<< i << "*" << " | ";
+        std::cout  << contacts[i].first_name << " | ";
+        std::cout  << contacts[i].last_name << " | ";
+        std::cout  << contacts[i].nickname <<  std::endl;
+}
 void PhoneBook::add_contact()
 {
     std::cout << "Please enter the following information:" << std::endl;
@@ -70,10 +82,17 @@ void PhoneBook::add_contact()
     PhoneBook::print_contact();
 }
 
-// void PhoneBook::search_contact()
-// {
-    
-// }
+void PhoneBook::search_contact()
+{
+    std::cout << "Please enter the index of the contact you want to search for: ";
+    std::string index;
+    std::getline(std::cin, index);
+    int in = stoi(index);
+    if (in > 8)
+        std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
+    else
+        print_contact_with_index(in);
+}
 int main()
 {
     std::string command;
@@ -91,9 +110,8 @@ int main()
             std::cout << "WARNING -> " <<  "Exiting Phonebook" << std::endl;
             break;
         }
-        // if (command == "SEARCH")
-        //         phonebook.search_contact();
-        // phonebook.print_contact();
+        if (command == "SEARCH")
+                phonebook.search_contact();
     }
     return (0);
 }
