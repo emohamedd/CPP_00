@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 14:54:32 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:08:15 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,18 @@ void PhoneBook::add_contact()
             std::cout << "Please enter the first name: ";
         }
     }
+    if (contacts[index].first_name.length() > 10) {
+        contacts[index].first_name = contacts[index].first_name.substr(0, 10) + ".";
+    }
     std::cout << "-> : Last Name: ";
     while (contacts[index].last_name.empty()) {
         std::getline(std::cin, contacts[index].last_name);
         if (contacts[index].last_name.empty()) {
             std::cout << "Please enter the last name: ";
         }
+    }
+    if (contacts[index].last_name.length() > 10) {
+        contacts[index].last_name = contacts[index].last_name.substr(0, 10) + ".";
     }
     std::cout << "-> : Nickname: ";
     while (contacts[index].nickname.empty()) {
@@ -61,6 +67,9 @@ void PhoneBook::add_contact()
             std::cout << "Please enter the nickname: ";
         }
     }
+    if (contacts[index].nickname.length() > 10) {
+        contacts[index].nickname = contacts[index].nickname.substr(0, 10) + ".";
+    }
     std::cout << "-> : Phone Number: ";
     while (contacts[index].phone_number.empty()) {
         std::getline(std::cin, contacts[index].phone_number);
@@ -68,12 +77,18 @@ void PhoneBook::add_contact()
             std::cout << "Please enter the phone number: ";
         }
     }
+    if (contacts[index].phone_number.length() > 10) {
+        contacts[index].phone_number = contacts[index].phone_number.substr(0, 10) + ".";
+    }
     std::cout << "-> : Darkest Secret: ";
     while (contacts[index].darkest_secret.empty()) {
         std::getline(std::cin, contacts[index].darkest_secret);
         if (contacts[index].darkest_secret.empty()) {
             std::cout << "Please enter the darkest secret: ";
         }
+    }
+    if (contacts[index].darkest_secret.length() > 10) {
+        contacts[index].darkest_secret = contacts[index].darkest_secret.substr(0, 10) + ".";
     }
     index++;
     if (index == 8)
@@ -92,7 +107,6 @@ void PhoneBook::search_contact()
         return;
     }
     int in = atoi(index.c_str());
-    
     if (in > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
     else
