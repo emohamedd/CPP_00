@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 15:08:15 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:36:31 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,18 @@ void PhoneBook::add_contact()
 void PhoneBook::search_contact()
 {
     std::cout << "Please enter the index of the contact you want to search for: ";
-    std::string index;
-    std::getline(std::cin, index);
-    if (index.find_first_not_of("+-1234567890") != std::string::npos) {
-        std::cout << "WARNING -> " << "Not a number\n";
-        return;
+    int i;
+    std::cin >> i;
+    if (std::cin.fail())
+    {
+        std::cin.clear();
+        std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
+        return ;
     }
-    int in = atoi(index.c_str());
-    if (in > 8)
+    else if (i > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
     else
-        print_contact_with_index(in);
+        print_contact_with_index(i);
 }
 int main()
 {
@@ -120,8 +121,8 @@ int main()
     {
         std::cout << "Please enter a command : ";
         std::getline(std::cin, command);
-        if (command != "ADD" && command != "SEARCH" && command != "EXIT")
-            std::cout << "WARNING -> " << "Please enter a valid command" << std::endl;
+        // if (command != "ADD" && command != "SEARCH" && command != "EXIT")
+        //     std::cout << "WARNING -> " << "Please enter a valid command" << std::endl;
         if (command == "ADD")
             phonebook.add_contact();
         if (command == "EXIT")
