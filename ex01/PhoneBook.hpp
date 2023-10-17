@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:43:44 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 13:24:56 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:45:35 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 };
 
 class PhoneBook{
-    Contact contacts[8];
+    Contact contacts[3];
     int index;
 public:
     void add_contact();
