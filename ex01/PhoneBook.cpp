@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 19:53:41 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:55:24 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void PhoneBook::print_contact_with_index(int i)
 }
 void PhoneBook::add_contact()
 {
-    if (index >= 3)
+    if (index >= 8)
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 7; i++)
         {
             contacts[i] = contacts[i + 1];
         }
@@ -95,18 +95,6 @@ void PhoneBook::add_contact()
         contacts[index].darkest_secret = contacts[index].darkest_secret.substr(0, 10) + ".";
     }
     index++;
-    // std::cout << "index << " << index << std::endl;
-    // int last = 3;
-    // int i = 1;
-    // if (index == last)
-    // {  
-    //         while(i < last)
-    //         {
-    //             contacts[i - 1] = contacts[i];
-    //             i++;
-    //         }
-    //         index--;
-    // }
     
     PhoneBook::print_contact();
 }
