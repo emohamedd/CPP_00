@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:43:44 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/16 16:39:27 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:24:56 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ public:
     void add_contact();
     void search_contact();
     void print_contact();
-    void exit_phone();
     void print_contact_with_index(int in);
 };
 
