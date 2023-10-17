@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 13:21:07 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:54:32 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ void PhoneBook::search_contact()
     std::string index;
     std::getline(std::cin, index);
     if (index.find_first_not_of("+-1234567890") != std::string::npos) {
-        std::cout << "Not a number\n";
+        std::cout << "WARNING -> " << "Not a number\n";
         return;
     }
-    int in = stoi(index);
+    int in = atoi(index.c_str());
     
     if (in > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
