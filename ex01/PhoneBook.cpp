@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 14:43:10 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:41:25 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,19 +118,20 @@ void PhoneBook::search_contact()
     std::cout << "Please enter the index of the contact you want to search for: ";
  
     int i;
-    std::cin >> i;
     if (std::cin.eof())
     {
         std::cout << "WARNING -> " << "Please enter an index" << std::endl;
         return ;
     }
+    else
+    std::cin >> i;
     if (std::cin.fail())
-    {
+    {   
         std::cin.clear();
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
         return ;
     }
-    else if (i > 8)
+    else if (i < 0 || i > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
     else
         print_contact_with_index(i);
