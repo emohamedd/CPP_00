@@ -6,23 +6,26 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/17 19:55:24 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:04:25 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 
-void PhoneBook::print_contact(){
+int PhoneBook::print_contact(){
+    if (index == 0) {
+        std::cout << "No contacts found." << std::endl;
+        return 1;
+    }
     for (int i = 0; i < index ; i++)
     {
-        std::cout << "CONTACT : " << "*"<< i << "*" << " | ";
+        std::cout << "CONTACT : " << i << "*" << " | ";
         std::cout  << contacts[i].first_name << " | ";
         std::cout  << contacts[i].last_name << " | ";
-        std::cout  << contacts[i].nickname << " | ";
-        std::cout  << contacts[i].phone_number << " | ";
-        std::cout  << contacts[i].darkest_secret << std::endl;
+        std::cout  << contacts[i].nickname << std::endl;
     }
+    return 0;
 }
 
 void PhoneBook::print_contact_with_index(int i)
@@ -32,7 +35,7 @@ void PhoneBook::print_contact_with_index(int i)
             std::cout << "WARNING -> " << "index OUT of RANGE" << std::endl;
             return ;
         }
-        std::cout << "CONTACT : " << "*"<< i << "*" << " | ";
+        std::cout << "CONTACT : " << i << "*" << " | ";
         std::cout  << contacts[i].first_name << " | ";
         std::cout  << contacts[i].last_name << " | ";
         std::cout  << contacts[i].nickname <<  std::endl;
@@ -96,14 +99,22 @@ void PhoneBook::add_contact()
     }
     index++;
     
-    PhoneBook::print_contact();
+    // PhoneBook::print_contact();
 }
 
 void PhoneBook::search_contact()
 {
+    if (PhoneBook::print_contact ())
+        return;
     std::cout << "Please enter the index of the contact you want to search for: ";
+ 
     int i;
     std::cin >> i;
+    if (std::cin.eof())
+    {
+        std::cout << "WARNING -> " << "Please enter an index" << std::endl;
+        exit(0) ;
+    }
     if (std::cin.fail())
     {
         std::cin.clear();
@@ -134,6 +145,7 @@ int main()
         }
         if (command == "SEARCH")
                 phonebook.search_contact();
+
     }
     return (0);
 }
