@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cPP                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 16:34:48 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:39:28 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,24 @@ int PhoneBook::print_contact(){
     }
     return 0;
 }
-void PhoneBook::print_contact_with_index(int i)
+
+void PhoneBook::print_all_contact(int i)
 {
-        if (i > index - 1)
+     if (i > index - 1)
         {
             std::cout << "WARNING -> " << "index OUT of RANGE" << std::endl;
             return ;
         }
-        std::cout << "CONTACT : " << i << "|" << std::setw(10);
-        std::cout  << contacts[i].get_first_name()<< "|" << std::setw(10);
-        std::cout  << contacts[i].get_last_name() << "|" << std::setw(10);
-        std::cout  << contacts[i].get_nickname() << "|" << std::setw(10) << std::endl;
+    for(int i = 0; i < index; i++)
+    {
+        std::cout << "First Name: " << contacts[i].get_first_name() << std::endl;
+        std::cout << "Last Name: " << contacts[i].get_last_name() << std::endl;
+        std::cout << "Nickname: " << contacts[i].get_nickname() << std::endl;
+        std::cout << "Phone Number: " << contacts[i].get_phone_number() << std::endl;
+        std::cout << "Darkest Secret: " << contacts[i].get_darkest_secret() << std::endl;
+    }
 }
+
 void PhoneBook::add_contact() {
     if (index >= 8) {
         for (int i = 0; i < 7; i++) {
@@ -118,23 +124,19 @@ void PhoneBook::search_contact()
     std::cout << "Please enter the index of the contact you want to search for: ";
  
     int i;
-    if (std::cin.eof())
+    std::string str;
+    std::getline(std::cin, str);
+    // std::cin >> i;
+    if ((str.c_str()[0] >= 'a' && str.c_str()[0] <= 'z' )|| (str.c_str()[0] >= 'A' && str.c_str()[0] <= 'Z'))
     {
-        std::cout << "WARNING -> " << "Please enter an index" << std::endl;
-        return ;
-    }
-    else
-    std::cin >> i;
-    if (std::cin.fail())
-    {   
-        std::cin.clear();
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
         return ;
     }
-    else if (i < 0 || i > 8)
+    i = std::atoi(str.c_str());
+    if (i < 0 || i > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
     else
-        print_contact_with_index(i);
+        PhoneBook::print_all_contact(i);
 }
 int main()
 {
@@ -148,13 +150,13 @@ int main()
         //     std::cout << "WARNING -> " << "Please enter a valid command" << std::endl;
         if (command == "ADD")
             phonebook.add_contact();
-        if (command == "EXIT")
+        else if (command == "EXIT")
         {
             std::cout << "WARNING -> " <<  "Exiting Phonebook" << std::endl;
             break;
         }
-        if (command == "SEARCH")
-                phonebook.search_contact();
+        else if (command == "SEARCH")
+            phonebook.search_contact();
 
     }
     return (0);
