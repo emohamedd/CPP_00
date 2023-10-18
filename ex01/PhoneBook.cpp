@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cPP                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/16 16:54:35 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:21:02 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void PhoneBook::search_contact()
     std::cout << "Please enter the index of the contact you want to search for: ";
     std::string index;
     std::getline(std::cin, index);
-    int in = stoi(index);
+    int in = std::atoi(index.c_str());
     if (in > 8)
         std::cout << "WARNING -> " << "Please enter a valid index" << std::endl;
     else
