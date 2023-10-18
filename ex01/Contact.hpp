@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 09:54:03 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 10:02:25 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:12:26 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ private:
     std::string last_name;
     std::string nickname;
     std::string phone_number;
-    std::string darkest_secret;
+    std::string darkest_secret; 
 public:
     // SETTERS
     void set_first_name(std::string first_name);
