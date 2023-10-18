@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 14:04:25 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:43:10 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int PhoneBook::print_contact(){
     for (int i = 0; i < index ; i++)
     {
         std::cout << "CONTACT : " << i << "*" << " | ";
-        std::cout  << contacts[i].first_name << " | ";
-        std::cout  << contacts[i].last_name << " | ";
-        std::cout  << contacts[i].nickname << std::endl;
+        std::cout  << contacts[i].get_first_name()<< " | ";
+        std::cout  << contacts[i].get_last_name() << " | ";
+        std::cout  << contacts[i].get_nickname() << std::endl;
     }
     return 0;
 }
@@ -36,67 +36,76 @@ void PhoneBook::print_contact_with_index(int i)
             return ;
         }
         std::cout << "CONTACT : " << i << "*" << " | ";
-        std::cout  << contacts[i].first_name << " | ";
-        std::cout  << contacts[i].last_name << " | ";
-        std::cout  << contacts[i].nickname <<  std::endl;
+        std::cout  << contacts[i].get_first_name() << " | ";
+        std::cout  << contacts[i].get_last_name() << " | ";
+        std::cout  << contacts[i].get_nickname() <<  std::endl;
 }
-void PhoneBook::add_contact()
-{
-    if (index >= 8)
-    {
-        for(int i = 0; i < 7; i++)
-        {
+void PhoneBook::add_contact() {
+    if (index >= 8) {
+        for (int i = 0; i < 7; i++) {
             contacts[i] = contacts[i + 1];
         }
         index--;
     }
 
+    std::string input;
     std::cout << "Please enter the following information:" << std::endl;
-    std::cout << "-> : First Name: ";
-        std::getline(std::cin, contacts[index].first_name);
-        if (contacts[index].first_name.empty()) {
-                  std::cout << "CRASH "<< "Please enter a first name " << std::endl;
-                return;
-        }
-    if (contacts[index].first_name.length() > 10) {
-        contacts[index].first_name = contacts[index].first_name.substr(0, 10) + ".";
+
+    std::cout << "-> First Name: ";
+    std::getline(std::cin, input);
+    if (input.empty()) {
+        std::cout << "CRASH " << "Please enter a first name " << std::endl;
+        return;
     }
-    std::cout << "-> : Last Name: ";
-        std::getline(std::cin, contacts[index].last_name);
-        if (contacts[index].last_name.empty()) {
-                std::cout << "CRASH "<< "Please enter a last name " << std::endl;
-                return;
+    if (input.length() > 10) {
+        input = input.substr(0, 10) + ".";
     }
-    if (contacts[index].last_name.length() > 10) {
-        contacts[index].last_name = contacts[index].last_name.substr(0, 10) + ".";
+    contacts[index].set_first_name(input);
+
+    std::cout << "-> Last Name: ";
+    std::getline(std::cin, input);
+    if (input.empty()) {
+        std::cout << "CRASH " << "Please enter a last name " << std::endl;
+        return;
     }
-    std::cout << "-> : Nickname: ";
-        std::getline(std::cin, contacts[index].nickname);
-        if (contacts[index].nickname.empty()) {
-                  std::cout << "CRASH "<< "Please enter a Nickname" << std::endl;
-                return;
+    if (input.length() > 10) {
+        input = input.substr(0, 10) + ".";
     }
-    if (contacts[index].nickname.length() > 10) {
-        contacts[index].nickname = contacts[index].nickname.substr(0, 10) + ".";
+    contacts[index].set_last_name(input);
+
+    std::cout << "-> Nickname: ";
+    std::getline(std::cin, input);
+    if (input.empty()) {
+        std::cout << "CRASH " << "Please enter a Nickname" << std::endl;
+        return;
     }
-    std::cout << "-> : Phone Number: ";
-        std::getline(std::cin, contacts[index].phone_number);
-        if (contacts[index].phone_number.empty()) {
-                  std::cout << "CRASH "<< "Please enter a Phone Number" << std::endl;
-                return;
-        }
-    if (contacts[index].phone_number.length() > 10) {
-        contacts[index].phone_number = contacts[index].phone_number.substr(0, 10) + ".";
+    if (input.length() > 10) {
+        input = input.substr(0, 10) + ".";
     }
-    std::cout << "-> : Darkest Secret: ";
-        std::getline(std::cin, contacts[index].darkest_secret);
-        if (contacts[index].darkest_secret.empty()) {
-                  std::cout << "CRASH "<< "Please enter a Darkest Secret " << std::endl;
-                return;;
-        }
-    if (contacts[index].darkest_secret.length() > 10) {
-        contacts[index].darkest_secret = contacts[index].darkest_secret.substr(0, 10) + ".";
+    contacts[index].set_nickname(input);
+
+    std::cout << "-> Phone Number: ";
+    std::getline(std::cin, input);
+    if (input.empty()) {
+        std::cout << "CRASH " << "Please enter a Phone Number" << std::endl;
+        return;
     }
+    if (input.length() > 10) {
+        input = input.substr(0, 10) + ".";
+    }
+    contacts[index].set_phone_number(input);
+
+    std::cout << "-> Darkest Secret: ";
+    std::getline(std::cin, input);
+    if (input.empty()) {
+        std::cout << "CRASH " << "Please enter a Darkest Secret " << std::endl;
+        return;
+    }
+    if (input.length() > 10) {
+        input = input.substr(0, 10) + ".";
+    }
+    contacts[index].set_darkest_secret(input);
+
     index++;
     
     // PhoneBook::print_contact();
@@ -113,7 +122,7 @@ void PhoneBook::search_contact()
     if (std::cin.eof())
     {
         std::cout << "WARNING -> " << "Please enter an index" << std::endl;
-        exit(0) ;
+        return ;
     }
     if (std::cin.fail())
     {

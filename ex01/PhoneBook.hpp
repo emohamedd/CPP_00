@@ -6,23 +6,14 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:43:44 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 13:47:44 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:40:49 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include <iostream>
-
-class Contact{
-public:
-    std::string first_name;
-    std::string last_name;
-    std::string nickname;
-    std::string phone_number;
-    std::string darkest_secret;
-};
+#include "Contact.hpp"
 
 class PhoneBook{
     Contact contacts[8];
