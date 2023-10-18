@@ -6,11 +6,12 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 15:41:25 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:34:48 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <iomanip>
 
 
 int PhoneBook::print_contact(){
@@ -20,14 +21,13 @@ int PhoneBook::print_contact(){
     }
     for (int i = 0; i < index ; i++)
     {
-        std::cout << "CONTACT : " << i << "*" << " | ";
-        std::cout  << contacts[i].get_first_name()<< " | ";
-        std::cout  << contacts[i].get_last_name() << " | ";
-        std::cout  << contacts[i].get_nickname() << std::endl;
+        std::cout << "CONTACT : " << i << "|" << std::setw(10);
+        std::cout  << contacts[i].get_first_name()<< "|" << std::setw(10);
+        std::cout  << contacts[i].get_last_name() << "|" << std::setw(10);
+        std::cout  << contacts[i].get_nickname() << "|" << std::setw(10) << std::endl;
     }
     return 0;
 }
-
 void PhoneBook::print_contact_with_index(int i)
 {
         if (i > index - 1)
@@ -35,10 +35,10 @@ void PhoneBook::print_contact_with_index(int i)
             std::cout << "WARNING -> " << "index OUT of RANGE" << std::endl;
             return ;
         }
-        std::cout << "CONTACT : " << i << "*" << " | ";
-        std::cout  << contacts[i].get_first_name() << " | ";
-        std::cout  << contacts[i].get_last_name() << " | ";
-        std::cout  << contacts[i].get_nickname() <<  std::endl;
+        std::cout << "CONTACT : " << i << "|" << std::setw(10);
+        std::cout  << contacts[i].get_first_name()<< "|" << std::setw(10);
+        std::cout  << contacts[i].get_last_name() << "|" << std::setw(10);
+        std::cout  << contacts[i].get_nickname() << "|" << std::setw(10) << std::endl;
 }
 void PhoneBook::add_contact() {
     if (index >= 8) {
@@ -58,7 +58,7 @@ void PhoneBook::add_contact() {
         return;
     }
     if (input.length() > 10) {
-        input = input.substr(0, 10) + ".";
+        input = input.substr(0, 9) + ".";
     }
     contacts[index].set_first_name(input);
 
@@ -69,7 +69,7 @@ void PhoneBook::add_contact() {
         return;
     }
     if (input.length() > 10) {
-        input = input.substr(0, 10) + ".";
+        input = input.substr(0, 9) + ".";
     }
     contacts[index].set_last_name(input);
 
@@ -80,7 +80,7 @@ void PhoneBook::add_contact() {
         return;
     }
     if (input.length() > 10) {
-        input = input.substr(0, 10) + ".";
+        input = input.substr(0, 9) + ".";
     }
     contacts[index].set_nickname(input);
 
