@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cPP                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/19 07:53:32 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:48:37 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,27 @@ void PhoneBook::print_all_contact(int i)
             std::cout << "WARNING -> " << "index OUT of RANGE" << std::endl;
             return ;
         }
-    for(int i = 0; i < index; i++)
-    {
+
         std::cout << "First Name: " << contacts[i].get_first_name() << std::endl;
         std::cout << "Last Name: " << contacts[i].get_last_name() << std::endl;
         std::cout << "Nickname: " << contacts[i].get_nickname() << std::endl;
         std::cout << "Phone Number: " << contacts[i].get_phone_number() << std::endl;
         std::cout << "Darkest Secret: " << contacts[i].get_darkest_secret() << std::endl;
-    }
 }
 
 void PhoneBook::add_contact() {
+    std::string input_first_name;
+    std::string input_last_name;
+    std::string input_nickname;
+    std::string input_phone_number;
+    std::string input_darkest_secret;
+
     if (index >= 8) {
         for (int i = 0; i < 7; i++) {
             contacts[i] = contacts[i + 1];
         }
         index--;
     }
-
-    std::string input_first_name;
-    std::string input_last_name;
-    std::string input_nickname;
-    std::string input_phone_number;
-    std::string input_darkest_secret;
     std::cout << "Please enter the following information:" << std::endl;
 
     std::cout << "-> First Name: ";
