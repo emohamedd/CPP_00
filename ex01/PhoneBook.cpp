@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/18 19:39:28 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/19 07:53:32 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,63 +54,74 @@ void PhoneBook::add_contact() {
         index--;
     }
 
-    std::string input;
+    std::string input_first_name;
+    std::string input_last_name;
+    std::string input_nickname;
+    std::string input_phone_number;
+    std::string input_darkest_secret;
     std::cout << "Please enter the following information:" << std::endl;
 
     std::cout << "-> First Name: ";
-    std::getline(std::cin, input);
-    if (input.empty()) {
-        std::cout << "CRASH " << "Please enter a first name " << std::endl;
-        return;
+    // std::getline(std::cin, input);
+    while(input_first_name.empty())
+    {
+        std::getline(std::cin, input_first_name);
+        if (input_first_name.empty()) {
+            std::cout  << "Please enter a first name: ";
+        }
     }
-    if (input.length() > 10) {
-        input = input.substr(0, 9) + ".";
+    if (input_first_name.length() > 10) {
+        input_first_name = input_first_name.substr(0, 9) + ".";
     }
-    contacts[index].set_first_name(input);
+    contacts[index].set_first_name(input_first_name);
 
     std::cout << "-> Last Name: ";
-    std::getline(std::cin, input);
-    if (input.empty()) {
-        std::cout << "CRASH " << "Please enter a last name " << std::endl;
-        return;
+     while(input_last_name.empty()){
+        std::getline(std::cin, input_last_name);
+    if (input_last_name.empty()) {
+        std::cout  << "Please enter a last name: ";
     }
-    if (input.length() > 10) {
-        input = input.substr(0, 9) + ".";
     }
-    contacts[index].set_last_name(input);
+    if (input_last_name.length() > 10) {
+        input_last_name = input_last_name.substr(0, 9) + ".";
+    }
+    contacts[index].set_last_name(input_last_name);
 
     std::cout << "-> Nickname: ";
-    std::getline(std::cin, input);
-    if (input.empty()) {
-        std::cout << "CRASH " << "Please enter a Nickname" << std::endl;
-        return;
+     while(input_nickname.empty()){     
+    std::getline(std::cin, input_nickname);
+    if (input_nickname.empty()) {
+        std::cout  << "Please enter a Nickname: ";
     }
-    if (input.length() > 10) {
-        input = input.substr(0, 9) + ".";
     }
-    contacts[index].set_nickname(input);
+    if (input_nickname.length() > 10) {
+        input_nickname = input_nickname.substr(0, 9) + ".";
+    }
+    contacts[index].set_nickname(input_nickname);
 
     std::cout << "-> Phone Number: ";
-    std::getline(std::cin, input);
-    if (input.empty()) {
-        std::cout << "CRASH " << "Please enter a Phone Number" << std::endl;
-        return;
+     while(input_phone_number.empty()){
+    std::getline(std::cin, input_phone_number);
+    if (input_phone_number.empty()) {
+        std::cout  << "Please enter a Phone Number: ";
     }
-    if (input.length() > 10) {
-        input = input.substr(0, 10) + ".";
     }
-    contacts[index].set_phone_number(input);
+    if (input_phone_number.length() > 10) {
+        input_phone_number = input_phone_number.substr(0, 10) + ".";
+    }
+    contacts[index].set_phone_number(input_phone_number);
 
     std::cout << "-> Darkest Secret: ";
-    std::getline(std::cin, input);
-    if (input.empty()) {
-        std::cout << "CRASH " << "Please enter a Darkest Secret " << std::endl;
-        return;
+     while(input_darkest_secret.empty()){
+    std::getline(std::cin, input_darkest_secret);
+    if (input_darkest_secret.empty()) {
+        std::cout  << "Please enter a Darkest Secret: ";
     }
-    if (input.length() > 10) {
-        input = input.substr(0, 10) + ".";
     }
-    contacts[index].set_darkest_secret(input);
+    if (input_darkest_secret.length() > 10) {
+        input_darkest_secret = input_darkest_secret.substr(0, 10) + ".";
+    }
+    contacts[index].set_darkest_secret(input_darkest_secret);
 
     index++;
     
