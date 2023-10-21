@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 09:54:03 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/21 17:54:13 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:28:08 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ public:
     std::string get_phone_number();
     std::string get_darkest_secret();
     
-    std::string get_f;
-    std::string get_l;
-    std::string get_n;
-    std::string get_p;
-    std::string get_d;
+    std::string get_f = "LOL";
+    std::string get_l = "LOL";
+    std::string get_n = "LOL";
+    std::string get_p = "LOL";
+    std::string get_d = "LOL";
 };
 #endif
