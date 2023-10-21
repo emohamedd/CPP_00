@@ -6,7 +6,7 @@
 /*   By: emohamed <emohamed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:33:13 by emohamed          #+#    #+#             */
-/*   Updated: 2023/10/21 18:02:30 by emohamed         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:11:29 by emohamed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ void PhoneBook::add_contact() {
     std::cout << "-> Phone Number: ";
      while(input_phone_number.empty()){
     std::getline(std::cin, input_phone_number);
+     if (!std::all_of(input_phone_number.begin(), input_phone_number.end(), ::isdigit)) {
+            std::cout << "Phone Number should only contain digits" << std::endl;
+            input_phone_number.clear();
+        }
     if (input_phone_number.empty()) {
         std::cout  << "Please enter a Phone Number: ";
     }
@@ -150,10 +154,12 @@ void PhoneBook::search_contact()
     else
         PhoneBook::print_all_contact(i);
 }
-int main()
+int main(int ac, char __attribute__((unused)) **av)
 {
     std::string command;
     PhoneBook phonebook;
+    if (ac == 1)
+    {   
     while (1)
     {
         std::cout << "Please enter a command : ";
@@ -169,5 +175,8 @@ int main()
             phonebook.search_contact();
 
     }
+    }
+    else
+        std::cout << "WARNING -> " << "Please enter a valid arg" << std::endl;
     return (0);
 }
